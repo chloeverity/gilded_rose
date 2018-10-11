@@ -1,13 +1,13 @@
-# Don't change anything in this file
-
 class Item
-  attr_accessor :quality, :days_remaining
+  attr_accessor :name, :sell_in, :quality
 
-  def initialize(quality. days_remaining)
-    @quality, @days_remaning = quality, days_remaning
+  def initialize(name, sell_in, quality)
+    @name = name
+    @sell_in = sell_in
+    @quality = quality
   end
 
-  def to_s
+  def to_s()
     "#{@name}, #{@sell_in}, #{@quality}"
   end
 end
