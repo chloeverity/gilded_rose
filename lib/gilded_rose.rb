@@ -2,6 +2,7 @@ require_relative 'backstage'
 require_relative 'normalitem'
 require_relative 'sulfuras'
 require_relative 'brie'
+require_relative 'conjureditem'
 require_relative 'item'
 
 class GildedRose
@@ -24,6 +25,9 @@ class GildedRose
         items.update_quality
       when item.name == "Backstage passes to a TAFKAL80ETC concert"
         items = Backstage.new(@items)
+        items.update_quality
+      when item.name == "Conjured Item"
+        items = Conjured.new(@items)
         items.update_quality
       end
     end
