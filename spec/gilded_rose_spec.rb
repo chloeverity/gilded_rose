@@ -13,6 +13,11 @@ describe GildedRose do
       GildedRose.new([item]).update_quality
       expect(item.quality).to eq(2)
     end
+    it 'makes sure it is using cheddar  update when given cheddar' do
+      item = Item.new("Aged Cheddar", 1, 0)
+      GildedRose.new([item]).update_quality
+      expect(item.quality).to eq(3)
+    end
     it 'makes sure it is using backstage update when given a backstage pass' do
       item = Item.new("Backstage passes to a TAFKAL80ETC concert", 10, 49)
       GildedRose.new([item]).update_quality
