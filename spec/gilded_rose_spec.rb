@@ -40,9 +40,8 @@ describe GildedRose do
     context 'when item is Aged Brie' do
       context 'before sell_in' do
         it 'raises quality by one after a day' do
-          item = Item.new("Aged Brie", 1, 0)
-          GildedRose.new([item]).update_quality
-          expect(item.quality).to eq(1)
+          items = [Item.new("Aged Brie", 5, 5)]
+     expect {GildedRose.new(items).update_quality()}.to change {items[0].quality}.by(1)
         end
 
         it 'never raises quality beyond 50' do
@@ -60,9 +59,8 @@ describe GildedRose do
         end
 
         it 'only raises quality to 50 when quality is at 49' do
-          item = Item.new("Aged Brie", 0, 49)
-          GildedRose.new([item]).update_quality
-          expect(item.quality).to eq(50)
+          items = [Item.new("Aged Brie", 0, 50)]
+          expect {GildedRose.new(items).update_quality()}.not_to change {items[0].quality}
         end
       end
     end
@@ -104,9 +102,8 @@ describe GildedRose do
         end
 
         it 'only raises quality to 50 when quality is at 49' do
-          item = Item.new("Backstage passes to a TAFKAL80ETC concert", 10, 49)
-          GildedRose.new([item]).update_quality
-          expect(item.quality).to eq(50)
+          items = [Item.new("Backstage passes to a TAFKAL80ETC concert", 10, 49)]
+          expect {GildedRose.new(items).update_quality()}.to change {items[0].quality}.by(1)
         end
       end
 
@@ -126,9 +123,9 @@ describe GildedRose do
 
       context 'after sell_in' do
         it 'sets quality to 0' do
-          item = Item.new("Backstage passes to a TAFKAL80ETC concert", 0, 50)
-          GildedRose.new([item]).update_quality
-          expect(item.quality).to eq(0)
+          items = [Item.new("Backstage passes to a TAFKAL80ETC concert", 0, 10)]
+          GildedRose.new(items).update_quality
+          expect(items[0].quality).to eq 0
         end
 
         it 'does not change quality' do
