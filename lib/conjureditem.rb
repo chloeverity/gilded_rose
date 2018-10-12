@@ -5,7 +5,7 @@ class Conjured
     @items = items
   end
 
-  def update_quality()
+  def update_quality
     @items.each do |item|
       item.sell_in -= 1
       item.quality -= 2

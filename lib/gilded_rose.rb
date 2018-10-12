@@ -9,8 +9,14 @@ require_relative 'yulfuras'
 
 class GildedRose
 
+  attr_accessor :items
+
   def initialize(items)
     @items = items
+  end
+
+  def add_item(item)
+    @items << item
   end
 
   def update_quality()

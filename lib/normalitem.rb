@@ -5,7 +5,7 @@ class Normal
     @items = items
   end
 
-  def update_quality()
+  def update_quality
     @items.each do |item|
       item.sell_in -= 1
       return if item.quality == 0
